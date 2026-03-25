@@ -1,0 +1,111 @@
+/* ===== Light theme (default) ===== */
+:root {
+  /* Primary blue */
+  --ion-color-primary: #1f3fa3;            /* a bit darker for contrast */
+  --ion-color-primary-rgb: 31,63,163;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #1b3791;
+  --ion-color-primary-tint: #2c50be;
+
+  /* Secondary accent */
+  --ion-color-secondary: #2563eb;
+  --ion-color-secondary-rgb: 37,99,235;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255,255,255;
+  --ion-color-secondary-shade: #1f55cc;
+  --ion-color-secondary-tint: #3a75ee;
+
+  /* Support color for highlights */
+  --ion-color-tertiary: #5aa0ff;          
+  --ion-color-tertiary-rgb: 90,160,255;
+  --ion-color-tertiary-contrast: #0b1220;
+  --ion-color-tertiary-contrast-rgb: 11,18,32;
+  --ion-color-tertiary-shade: #4d8bdf;
+  --ion-color-tertiary-tint: #73afff;
+
+  /* Neutral surfaces and text */
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255,255,255;
+  --ion-surface-1: #ffffff;
+  --ion-surface-2: #f8fafc;                /* subtle section background */
+  --ion-border-strong: rgba(15,23,42,0.15);/* stronger border */
+  --ion-border-soft: rgba(15,23,42,0.08);
+  --ion-text-color: #0b1324;               /* slightly darker text */
+  --ion-text-color-rgb: 11,19,36;
+  --ion-text-muted: #475569;               /* slate-600 */
+
+  /* Chrome */
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: var(--ion-color-primary);
+  --ion-tab-bar-background: #ffffff;
+  --ion-tab-bar-color: #667085;            /* neutral-500/600 */
+  --ion-tab-bar-color-selected: var(--ion-color-primary);
+
+  /* Cards */
+  --ion-card-background: var(--ion-surface-1);
+  --ion-card-border: var(--ion-border-strong);
+  --ion-card-shadow: 0 10px 26px rgba(2,6,23,0.08);
+
+  /* Buttons */
+  --ion-button-shadow: 0 8px 18px rgba(31,63,163,0.28);
+}
+
+/* ===== Dark theme (auto with system or .dark class) ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-color-primary: #86a5ff;          /* lightened blue for dark bg */
+    --ion-color-primary-rgb: 134,165,255;
+    --ion-color-primary-contrast: #0a0f1c;
+    --ion-color-primary-contrast-rgb: 10,15,28;
+    --ion-color-primary-shade: #6f8bea;
+    --ion-color-primary-tint: #9ab4ff;
+
+    --ion-color-secondary: #8bb3ff;
+    --ion-color-secondary-rgb: 139,179,255;
+    --ion-color-secondary-contrast: #0a0f1c;
+
+    --ion-color-tertiary: #b6d0ff;
+    --ion-color-tertiary-contrast: #0a0f1c;
+
+    --ion-background-color: #0b1020;       /* deep navy */
+    --ion-background-color-rgb: 11,16,32;
+    --ion-surface-1: #11172b;
+    --ion-surface-2: #0f1426;
+    --ion-border-strong: rgba(226,232,240,0.18);
+    --ion-border-soft: rgba(226,232,240,0.10);
+    --ion-text-color: #e6eaf2;
+    --ion-text-color-rgb: 230,234,242;
+    --ion-text-muted: #b8c1d9;
+
+    --ion-toolbar-background: #0b1020;
+    --ion-toolbar-color: var(--ion-color-primary);
+    --ion-tab-bar-background: #0b1020;
+    --ion-tab-bar-color: #97a3c1;
+    --ion-tab-bar-color-selected: var(--ion-color-primary);
+
+    --ion-card-background: #11172b;
+    --ion-card-border: var(--ion-border-soft);
+    --ion-card-shadow: 0 16px 40px rgba(0,0,0,0.45);
+
+    --ion-button-shadow: 0 6px 14px rgba(134,165,255,0.25);
+  }
+}
+
+/* Allow manual dark activation via .dark on body/html */
+.dark {
+  --ion-color-primary: #86a5ff;
+  --ion-color-primary-rgb: 134,165,255;
+  --ion-color-primary-contrast: #0a0f1c;
+  --ion-background-color: #0b1020;
+  --ion-surface-1: #11172b;
+  --ion-surface-2: #0f1426;
+  --ion-border-strong: rgba(226,232,240,0.18);
+  --ion-border-soft: rgba(226,232,240,0.10);
+  --ion-text-color: #e6eaf2;
+  --ion-text-muted: #b8c1d9;
+  --ion-toolbar-background: #0b1020;
+  --ion-tab-bar-background: #0b1020;
+  --ion-card-background: #11172b;
+  --ion-card-border: var(--ion-border-soft);
+}

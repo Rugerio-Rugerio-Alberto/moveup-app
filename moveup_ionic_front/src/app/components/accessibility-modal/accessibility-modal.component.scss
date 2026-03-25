@@ -1,0 +1,166 @@
+.accessibility-content {
+  padding: 16px;
+  max-width: 100%;
+}
+
+.accessibility-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.accessibility-icon {
+  font-size: 56px;
+  color: var(--ion-color-primary);
+  margin-bottom: 12px;
+}
+
+.accessibility-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  margin: 0 0 8px 0;
+}
+
+.accessibility-header p {
+  font-size: 0.95rem;
+  color: var(--ion-text-color);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.quick-action-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--ion-color-primary-tint) 0%, var(--ion-color-primary) 100%);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.quick-action-card ion-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.quick-action-card strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.quick-action-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+.instructions-section,
+.tips-section {
+  margin-bottom: 24px;
+}
+
+.instructions-section h3,
+.tips-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+  margin: 0 0 12px 0;
+}
+
+.instructions-list {
+  padding-left: 20px;
+  margin: 0 0 12px 0;
+}
+
+.instructions-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: var(--ion-text-color);
+  font-size: 0.95rem;
+}
+
+.shortcut-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--ion-color-light);
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.shortcut-tip ion-icon {
+  font-size: 20px;
+  color: var(--ion-color-warning);
+  flex-shrink: 0;
+}
+
+.shortcut-tip span {
+  font-size: 0.9rem;
+  color: var(--ion-text-color);
+  font-weight: 500;
+}
+
+.tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: var(--ion-color-light);
+  border-left: 4px solid var(--ion-color-primary);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.tip-card ion-icon {
+  font-size: 22px;
+  color: var(--ion-color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tip-card p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--ion-text-color);
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.modal-actions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ion-border-color);
+}
+
+/* Estilos para el modal - Optimizado para móvil */
+::ng-deep .accessibility-modal {
+  --width: 100%;
+  --max-width: 100%;
+  --height: 100%;
+  --border-radius: 0;
+}
+
+::ng-deep .accessibility-modal .modal-wrapper {
+  border-radius: 16px 16px 0 0;
+}
+
+/* Responsive para tablets */
+@media (min-width: 768px) {
+  ::ng-deep .accessibility-modal {
+    --width: 90%;
+    --max-width: 500px;
+    --height: auto;
+    --border-radius: 16px;
+  }
+
+  .accessibility-content {
+    padding: 24px;
+  }
+}
+

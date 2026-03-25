@@ -1,0 +1,20 @@
+<ion-app>
+  <ng-container *ngIf="isLoggedIn$ | async; else authOnly">
+
+    <ion-menu
+      side="start"
+      menuId="main-menu"
+      contentId="main-content"
+      type="overlay"
+      role="navigation"
+      aria-label="Menú principal de navegación">
+      <app-sidebar></app-sidebar>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ng-container>
+
+  <ng-template #authOnly>
+    <ion-router-outlet></ion-router-outlet>
+  </ng-template>
+</ion-app>

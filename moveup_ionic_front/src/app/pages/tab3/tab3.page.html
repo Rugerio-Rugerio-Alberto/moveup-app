@@ -1,0 +1,63 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content" role="main">
+  <ion-header collapse="condense" class="mu-header ion-no-border" mode="ios">
+    <ion-toolbar class="mu-toolbar" translucent="true">
+      <ion-title size="large">
+        <span class="mu-logo"></span><span class="mu-accent">Favoritos</span>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngIf="!articles.length" class="empty-card ion-text-center" role="status" aria-live="polite">
+    <ion-card-content>Sin favoritos. Toca el corazón en cualquier tarjeta para guardarla aquí.</ion-card-content>
+  </ion-card>
+
+  <ion-grid fixed *ngIf="articles.length">
+    <ion-row>
+      <ion-col
+        *ngFor="let it of articles; trackBy: trackByTitle"
+        size="12" size-sm="6" size-md="4" size-lg="3">
+
+        <a [href]="it.url"
+           target="_blank"
+           rel="noopener"
+           class="card-link"
+           [attr.aria-label]="'Abrir artículo favorito: ' + it.title">
+          <ion-card class="fav-card" role="article">
+            <ion-button
+              class="fav-float"
+              fill="solid"
+              size="small"
+              (click)="remove(it, $event)"
+              [attr.aria-label]="'Eliminar de favoritos: ' + it.title">
+              <ion-icon slot="icon-only" name="heart" aria-hidden="true"></ion-icon>
+            </ion-button>
+
+            <ion-img *ngIf="it.urlToImage" [src]="it.urlToImage" [alt]="'Imagen del artículo: ' + it.title"></ion-img>
+
+            <ion-card-header>
+              <div class="card-badges">
+                <span class="badge-category" *ngIf="it.source?.name" [attr.aria-label]="'Fuente: ' + it.source.name">{{ it.source.name }}</span>
+                <span class="badge-level">Favorito</span>
+              </div>
+              <ion-card-title>{{ it.title }}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content *ngIf="it.description">
+              {{ it.description }}
+            </ion-card-content>
+          </ion-card>
+        </a>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

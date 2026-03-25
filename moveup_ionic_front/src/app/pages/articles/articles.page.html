@@ -1,0 +1,105 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content" role="main">
+  <ion-header class="mu-header ion-no-border" collapse="condense" mode="ios">
+    <ion-toolbar class="mu-toolbar" translucent="true">
+      <ion-title size="large">
+        <span class="mu-logo"></span><span class="mu-accent">{{ getTitle() }}</span>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Anuncio de cambios para lectores de pantalla -->
+  <div aria-live="polite" aria-atomic="true" class="sr-only">
+    <span *ngIf="filteredCards.length > 0">{{ filteredCards.length }} artículos disponibles</span>
+    <span *ngIf="filteredCards.length === 0">No hay artículos disponibles para esta categoría</span>
+  </div>
+
+  <!-- Descripción del nivel -->
+  <div class="level-description" *ngIf="nivelActividad" [ngClass]="'level-' + nivelActividad" role="region" aria-labelledby="level-title">
+    <div class="description-content">
+      <div class="description-icon">
+        <ion-icon [name]="getDescriptionIcon()" aria-hidden="true"></ion-icon>
+      </div>
+      <div class="description-text">
+        <h3 class="description-title" id="level-title">{{ getDescriptionTitle() }}</h3>
+        <p class="description-message" aria-describedby="level-title">{{ getDescription() }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de categorías con scroll lateral -->
+  <div class="segment-scroll">
+    <ion-segment
+      [value]="selectedCategory"
+      (ionChange)="segmentChanged($event)"
+      mode="md"
+      scrollable="true"
+      role="tablist"
+      aria-label="Filtrar artículos por categoría">
+      <ion-segment-button value="todas" role="tab" [attr.aria-selected]="selectedCategory === 'todas'">
+        <ion-label>Todas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let category of categories" [value]="category" role="tab" [attr.aria-selected]="selectedCategory === category">
+        <ion-label class="ion-text-capitalize">{{ category }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Tarjetas de artículos -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col
+        *ngFor="let card of filteredCards; trackBy: trackByTitulo"
+        size="12" size-sm="6" size-md="4" size-lg="3">
+
+        <!-- Enlace contenedor para abrir el sitio -->
+        <a [href]="card.url" target="_blank" rel="noopener" class="card-link" [attr.aria-label]="'Abrir artículo: ' + card.titulo">
+          <ion-card class="fav-card" role="article">
+            <ion-button 
+              class="fav-float" 
+              fill="solid" 
+              size="small"
+              (click)="toggleFavFromCard($event, card)"
+              [attr.aria-label]="isCardFav(card) ? 'Quitar de favoritos: ' + card.titulo : 'Agregar a favoritos: ' + card.titulo"
+              [attr.aria-pressed]="isCardFav(card)">
+              <ion-icon slot="icon-only" [name]="isCardFav(card) ? 'heart' : 'heart-outline'" aria-hidden="true"></ion-icon>
+            </ion-button>
+    
+            <ion-img *ngIf="card.imagen" [src]="card.imagen" loading="lazy" [alt]="'Imagen del artículo: ' + card.titulo"></ion-img>
+
+            <ion-card-header>
+              <div class="card-badges">
+                <span class="badge-category ion-text-capitalize" aria-label="Categoría: {{ card.categoria }}">{{ card.categoria }}</span>
+                <span class="badge-level" *ngIf="card.nivelActividad" [ngClass]="'badge-' + card.nivelActividad" [attr.aria-label]="'Nivel de actividad: ' + (card.nivelActividad === 'alto' ? 'Alto' : card.nivelActividad === 'medio' ? 'Moderado' : 'Básico')">
+                  {{ card.nivelActividad === 'alto' ? 'Alto' : card.nivelActividad === 'medio' ? 'Moderado' : 'Básico' }}
+                </span>
+              </div>
+              <ion-card-title>{{ card.titulo }}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content *ngIf="card.descripcion">
+              {{ card.descripcion }}
+            </ion-card-content>
+          </ion-card>
+        </a>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Mensaje si no hay artículos -->
+  <div class="no-articles" *ngIf="filteredCards.length === 0" role="status" aria-live="polite">
+    <ion-icon name="document-outline" aria-hidden="true"></ion-icon>
+    <p>No hay artículos disponibles para esta categoría</p>
+  </div>
+
+</ion-content>
+

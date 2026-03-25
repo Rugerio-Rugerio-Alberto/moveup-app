@@ -1,0 +1,43 @@
+/* Estilos globales para la aplicación */
+
+/* Asegurar que el menú funcione correctamente */
+ion-menu {
+  z-index: 10000;
+}
+
+ion-menu::part(backdrop) {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+ion-menu::part(container) {
+  z-index: 10000;
+}
+
+/* Asegurar que el app root tenga el layout correcto */
+ion-app {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mejoras para web */
+@media (min-width: 768px) {
+  ion-app {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ion-router-outlet {
+    flex: 1;
+    display: block;
+  }
+  
+  /* Asegurar que el contenido sea visible */
+  ion-content {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+

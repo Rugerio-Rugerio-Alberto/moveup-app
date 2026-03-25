@@ -1,0 +1,73 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Secciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content" role="main">
+  <ion-header class="mu-header ion-no-border" collapse="condense" mode="ios">
+    <ion-toolbar class="mu-toolbar" translucent="true">
+      <ion-title size="large">
+        <span class="mu-logo"></span><span class="mu-accent">Secciones</span>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Barra de categorías con scroll lateral -->
+  <div class="segment-scroll">
+    <ion-segment
+      [value]="selectedCategory"
+      (ionChange)="segmentChanged($event)"
+      mode="md"
+      scrollable="true"
+      role="tablist"
+      aria-label="Filtrar artículos por categoría">
+      <ion-segment-button value="todas" role="tab" [attr.aria-selected]="selectedCategory === 'todas'">
+        <ion-label>Todas</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let category of categories" [value]="category" role="tab" [attr.aria-selected]="selectedCategory === category">
+        <ion-label class="ion-text-capitalize">{{ category }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Tarjetas estilo “Para ti”: imagen + título + descripción + click a vínculo -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col
+        *ngFor="let card of filteredCards; trackBy: trackByTitulo"
+        size="12" size-sm="6" size-md="4" size-lg="3">
+
+        <!-- Enlace contenedor para abrir el sitio -->
+        <a [href]="card.url" target="_blank" rel="noopener" class="card-link" [attr.aria-label]="'Abrir artículo: ' + card.titulo">
+          <ion-card class="fav-card" role="article">
+            <ion-button 
+              class="fav-float" 
+              fill="solid" 
+              size="small"
+              (click)="toggleFavFromCard($event, card)"
+              [attr.aria-label]="isCardFav(card) ? 'Quitar de favoritos: ' + card.titulo : 'Agregar a favoritos: ' + card.titulo"
+              [attr.aria-pressed]="isCardFav(card)">
+              <ion-icon slot="icon-only" [name]="isCardFav(card) ? 'heart' : 'heart-outline'" aria-hidden="true"></ion-icon>
+            </ion-button>
+    
+            <ion-img *ngIf="card.imagen" [src]="card.imagen" loading="lazy" [alt]="'Imagen del artículo: ' + card.titulo"></ion-img>
+
+            <ion-card-header>
+              <ion-card-title>{{ card.titulo }}</ion-card-title>
+              <ion-card-subtitle class="ion-text-capitalize" aria-label="Categoría: {{ card.categoria }}">{{ card.categoria }}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content *ngIf="card.descripcion">
+              {{ card.descripcion }}
+            </ion-card-content>
+          </ion-card>
+        </a>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

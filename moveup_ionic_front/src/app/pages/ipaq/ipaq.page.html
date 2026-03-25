@@ -1,0 +1,296 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cuestionario IPAQ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ipaq-content" id="main-content" role="main">
+  
+  <!-- Anuncio de cambios para lectores de pantalla -->
+  <div aria-live="polite" aria-atomic="true" class="sr-only">
+    <span *ngIf="currentStep === 'intro'">Pantalla de introducción del cuestionario</span>
+    <span *ngIf="currentStep === 'questionnaire'">Pregunta {{ currentQuestionIndex + 1 }} de {{ sections[currentSection].questions.length }} en la sección {{ currentSection + 1 }}</span>
+    <span *ngIf="currentStep === 'results'">Resultados del cuestionario disponibles</span>
+  </div>
+  
+  <!-- Introducción -->
+  <div *ngIf="currentStep === 'intro'" class="intro-container" role="region" aria-labelledby="intro-title">
+    <div class="intro-content">
+      <ion-icon name="fitness-outline" class="intro-icon" aria-hidden="true"></ion-icon>
+      <h1 class="intro-title" id="intro-title">Cuestionario IPAQ Largo</h1>
+      <h2 class="intro-subtitle">International Physical Activity Questionnaire</h2>
+      
+      <div class="intro-info">
+        <p class="intro-text">
+          El Cuestionario Internacional de Actividad Física (IPAQ) es una herramienta validada 
+          internacionalmente para medir los niveles de actividad física en adultos.
+        </p>
+        
+        <div class="info-section">
+          <h3>¿Qué mide este cuestionario?</h3>
+          <ul>
+            <li>Actividad física vigorosa y moderada</li>
+            <li>Caminar en diferentes contextos</li>
+            <li>Tiempo sentado</li>
+            <li>Actividades en trabajo, transporte, hogar y tiempo libre</li>
+          </ul>
+        </div>
+
+        <div class="info-section">
+          <h3>Instrucciones:</h3>
+          <ul>
+            <li>Responde pensando en la <strong>última semana</strong></li>
+            <li>Considera actividades de <strong>al menos 10 minutos</strong> de duración</li>
+            <li>Se honesto y preciso en tus respuestas</li>
+            <li>El cuestionario tomará aproximadamente <strong>10-15 minutos</strong></li>
+          </ul>
+        </div>
+
+        <div class="info-section warning" role="alert">
+          <ion-icon name="information-circle-outline" aria-hidden="true"></ion-icon>
+          <p>
+            <strong>Nota:</strong> Este cuestionario es informativo y no sustituye 
+            la evaluación de un profesional de la salud.
+          </p>
+        </div>
+      </div>
+
+      <ion-button (click)="startQuestionnaire()" class="start-button" shape="round" size="large" aria-describedby="intro-title">
+        <ion-icon name="play-outline" slot="start" aria-hidden="true"></ion-icon>
+        Comenzar Cuestionario
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Cuestionario -->
+  <div *ngIf="currentStep === 'questionnaire'" class="questionnaire-container" role="region" aria-labelledby="section-title">
+    <div class="progress-bar-container">
+      <div 
+        class="progress-bar" 
+        [style.width.%]="getProgress()"
+        role="progressbar"
+        [attr.aria-valuenow]="getProgress()"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [attr.aria-label]="'Progreso del cuestionario: ' + getProgress() + ' por ciento'">
+      </div>
+    </div>
+
+    <div class="questionnaire-content">
+      <div class="section-header">
+        <h2 class="section-title" id="section-title">{{ sections[currentSection].title }}</h2>
+        <p class="section-description" id="section-description">{{ sections[currentSection].description }}</p>
+        <div class="question-counter" aria-live="polite" aria-atomic="true">
+          Sección {{ currentSection + 1 }} de {{ sections.length }} - 
+          Pregunta {{ currentQuestionIndex + 1 }} de {{ sections[currentSection].questions.length }}
+        </div>
+      </div>
+
+      <div class="question-card" *ngIf="currentQuestion" [attr.aria-current]="'step'">
+        <div class="question-header">
+          <h3 class="question-title" id="question-title">{{ currentQuestion.label }}</h3>
+          <p class="question-description" id="question-description">{{ currentQuestion.description }}</p>
+        </div>
+
+        <div class="question-body">
+          <div class="form-group days-range-group">
+            <label class="form-label" for="days-range-{{ currentQuestionIndex }}">
+              ¿Cuántos días a la semana realizas esta actividad?
+            </label>
+            <div class="range-value" aria-live="polite" aria-atomic="true">
+              {{ getQuestionData('days') }} {{ getQuestionData('days') === 1 ? 'día' : 'días' }}
+            </div>
+            <ion-range
+              id="days-range-{{ currentQuestionIndex }}"
+              min="0"
+              max="7"
+              step="1"
+              [snaps]="true"
+              [pin]="true"
+              [value]="getQuestionData('days')"
+              (ionInput)="setQuestionData('days', $event)"
+              class="days-range"
+              aria-describedby="question-description"
+              aria-label="Selecciona cuántos días a la semana realizas esta actividad">
+            </ion-range>
+            <div class="range-labels" aria-hidden="true">
+              <span>0</span>
+              <span>7</span>
+            </div>
+          </div>
+
+          <div class="form-group" *ngIf="getQuestionData('days') > 0">
+            <fieldset>
+              <legend class="form-label">
+                ¿Cuánto tiempo al día realizas esta actividad?
+              </legend>
+              <div class="time-inputs">
+                <div class="time-group">
+                  <label for="hours-input-{{ currentQuestionIndex }}">Horas</label>
+                  <ion-input 
+                    id="hours-input-{{ currentQuestionIndex }}"
+                    type="number" 
+                    min="0" 
+                    max="23"
+                    [value]="getQuestionData('hours')"
+                    (ionInput)="setQuestionData('hours', $event)"
+                    placeholder="0"
+                    class="form-input"
+                    aria-label="Horas de actividad física">
+                  </ion-input>
+                </div>
+                <div class="time-group">
+                  <label for="minutes-input-{{ currentQuestionIndex }}">Minutos</label>
+                  <ion-input 
+                    id="minutes-input-{{ currentQuestionIndex }}"
+                    type="number" 
+                    min="0" 
+                    max="59"
+                    [value]="getQuestionData('minutes')"
+                    (ionInput)="setQuestionData('minutes', $event)"
+                    placeholder="0"
+                    class="form-input"
+                    aria-label="Minutos de actividad física">
+                  </ion-input>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="question-note" *ngIf="currentQuestion.key === 'sitting'" role="note" aria-label="Nota importante">
+            <ion-icon name="information-circle-outline" aria-hidden="true"></ion-icon>
+            <p>Incluye tiempo sentado en trabajo, transporte, casa y tiempo libre</p>
+          </div>
+        </div>
+
+        <div class="question-actions">
+          <ion-button 
+            (click)="previousQuestion()" 
+            fill="outline" 
+            *ngIf="currentSection > 0 || currentQuestionIndex > 0"
+            aria-label="Ir a la pregunta anterior">
+            <ion-icon name="arrow-back-outline" slot="start" aria-hidden="true"></ion-icon>
+            Anterior
+          </ion-button>
+          
+          <ion-button 
+            (click)="nextQuestion()" 
+            [disabled]="getQuestionData('days') === 0 && getQuestionData('hours') === 0 && getQuestionData('minutes') === 0"
+            [attr.aria-label]="(currentSection === sections.length - 1 && currentQuestionIndex === sections[currentSection].questions.length - 1) ? 'Finalizar cuestionario y ver resultados' : 'Ir a la siguiente pregunta'">
+            <span *ngIf="currentSection < sections.length - 1 || currentQuestionIndex < sections[currentSection].questions.length - 1">
+              Siguiente
+            </span>
+            <span *ngIf="currentSection === sections.length - 1 && currentQuestionIndex === sections[currentSection].questions.length - 1">
+              Ver Resultados
+            </span>
+            <ion-icon name="arrow-forward-outline" slot="end" aria-hidden="true"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  <div *ngIf="currentStep === 'results'" class="results-container" role="region" aria-labelledby="results-title">
+    <div class="results-content">
+      <ion-icon name="trophy-outline" class="results-icon" aria-hidden="true"></ion-icon>
+      <h1 class="results-title" id="results-title">Resultados del Cuestionario IPAQ</h1>
+      
+      <div class="results-card" *ngIf="getResults() as results" role="article">
+        <div class="result-category">
+          <h2 class="category-title">Nivel de Actividad Física</h2>
+          <div class="category-badge" [ngClass]="'category-' + results.category.toLowerCase()" role="status" aria-live="polite">
+            {{ results.category }}
+          </div>
+        </div>
+
+        <div class="results-details" role="list">
+          <div class="detail-item" role="listitem">
+            <ion-icon name="flame-outline" class="detail-icon vigorous" aria-hidden="true"></ion-icon>
+            <div class="detail-content">
+              <h3>Actividad Vigorosa</h3>
+              <p class="detail-value" aria-label="{{ results.vigorousMETMinutes }} MET-minutos por semana">{{ results.vigorousMETMinutes }} MET-min/semana</p>
+            </div>
+          </div>
+
+          <div class="detail-item" role="listitem">
+            <ion-icon name="bicycle-outline" class="detail-icon moderate" aria-hidden="true"></ion-icon>
+            <div class="detail-content">
+              <h3>Actividad Moderada</h3>
+              <p class="detail-value" aria-label="{{ results.moderateMETMinutes }} MET-minutos por semana">{{ results.moderateMETMinutes }} MET-min/semana</p>
+            </div>
+          </div>
+
+          <div class="detail-item" role="listitem">
+            <ion-icon name="walk-outline" class="detail-icon walking" aria-hidden="true"></ion-icon>
+            <div class="detail-content">
+              <h3>Caminar</h3>
+              <p class="detail-value" aria-label="{{ results.walkingMETMinutes }} MET-minutos por semana">{{ results.walkingMETMinutes }} MET-min/semana</p>
+            </div>
+          </div>
+
+          <div class="detail-item total" role="listitem">
+            <ion-icon name="stats-chart-outline" class="detail-icon total" aria-hidden="true"></ion-icon>
+            <div class="detail-content">
+              <h3>Total Actividad Física</h3>
+              <p class="detail-value" aria-label="{{ results.totalMETMinutes }} MET-minutos por semana en total">{{ results.totalMETMinutes }} MET-min/semana</p>
+            </div>
+          </div>
+
+          <div class="detail-item sitting" role="listitem">
+            <ion-icon name="time-outline" class="detail-icon sitting" aria-hidden="true"></ion-icon>
+            <div class="detail-content">
+              <h3>Tiempo Sentado</h3>
+              <p class="detail-value" aria-label="{{ results.sittingMinutes }} minutos por día sentado">{{ results.sittingMinutes }} minutos/día</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-interpretation">
+          <h3>Interpretación:</h3>
+          <div [ngSwitch]="results.category">
+            <p *ngSwitchCase="'Alto'">
+              Tienes un <strong>nivel alto</strong> de actividad física. Mantén este excelente hábito 
+              y continúa siendo activo regularmente.
+            </p>
+            <p *ngSwitchCase="'Moderado'">
+              Tienes un <strong>nivel moderado</strong> de actividad física. Intenta aumentar 
+              gradualmente tu actividad para alcanzar niveles más altos de salud.
+            </p>
+            <p *ngSwitchCase="'Bajo'">
+              Tu nivel de actividad física es <strong>bajo</strong>. Te recomendamos comenzar 
+              a incorporar más actividad física en tu rutina diaria. Pequeños cambios pueden 
+              marcar una gran diferencia.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-actions">
+        <ion-button (click)="goToRoutine()" class="routine-button" shape="round" size="large" aria-label="Ver mi rutina semanal personalizada">
+          <ion-icon name="calendar-outline" slot="start" aria-hidden="true"></ion-icon>
+          Ver Mi Rutina Semanal
+        </ion-button>
+        <ion-button (click)="goToRecommendedArticles()" class="articles-button" shape="round" size="large" aria-label="Ver artículos recomendados según mi nivel de actividad">
+          <ion-icon name="newspaper-outline" slot="start" aria-hidden="true"></ion-icon>
+          Artículos que te pueden interesar
+        </ion-button>
+        <div class="secondary-actions">
+          <ion-button (click)="restartQuestionnaire()" fill="outline" shape="round" aria-label="Realizar el cuestionario nuevamente">
+            <ion-icon name="refresh-outline" slot="start" aria-hidden="true"></ion-icon>
+            Realizar Nuevamente
+          </ion-button>
+          <ion-button (click)="goToApp()" shape="round" aria-label="Volver a la página de inicio">
+            <ion-icon name="home-outline" slot="start" aria-hidden="true"></ion-icon>
+            Volver al Inicio
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+

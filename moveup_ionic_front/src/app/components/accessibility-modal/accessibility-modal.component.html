@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Accesibilidad</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()" aria-label="Cerrar modal de accesibilidad">
+        <ion-icon name="close" aria-hidden="true"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" role="main">
+  <div class="accessibility-content">
+    <div class="accessibility-header">
+      <ion-icon name="accessibility-outline" class="accessibility-icon" aria-hidden="true"></ion-icon>
+      <h2>Modo de Accesibilidad</h2>
+      <p>Activa el lector de pantalla de tu móvil para usar la app con voz</p>
+    </div>
+
+    <div class="quick-action-card" *ngIf="getInstructions().quickAction" role="alert">
+      <ion-icon name="flash-outline" aria-hidden="true"></ion-icon>
+      <div>
+        <strong>Método Rápido</strong>
+        <p>{{ getInstructions().quickAction }}</p>
+      </div>
+    </div>
+
+    <div class="instructions-section" role="region" [attr.aria-labelledby]="'instructions-title-' + platform">
+      <h3 [id]="'instructions-title-' + platform">{{ getInstructions().title }}</h3>
+      <ol class="instructions-list" role="list">
+        <li *ngFor="let step of getInstructions().steps; let i = index" role="listitem">
+          {{ step }}
+        </li>
+      </ol>
+      <div class="shortcut-tip" *ngIf="getInstructions().shortcut">
+        <ion-icon name="bulb-outline" aria-hidden="true"></ion-icon>
+        <span>{{ getInstructions().shortcut }}</span>
+      </div>
+    </div>
+
+    <div class="tips-section" role="region" aria-labelledby="tips-title">
+      <h3 id="tips-title">Consejos para Móvil</h3>
+      <div class="tip-card" role="article">
+        <ion-icon name="hand-left-outline" aria-hidden="true"></ion-icon>
+        <p><strong>Desliza</strong> con un dedo para navegar entre elementos</p>
+      </div>
+      <div class="tip-card" role="article">
+        <ion-icon name="finger-print-outline" aria-hidden="true"></ion-icon>
+        <p><strong>Toca dos veces</strong> para activar botones y enlaces</p>
+      </div>
+      <div class="tip-card" role="article">
+        <ion-icon name="volume-high-outline" aria-hidden="true"></ion-icon>
+        <p>Los <strong>cambios se anuncian</strong> automáticamente con voz</p>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <ion-button (click)="closeModal()" expand="block" shape="round" size="large">
+        Entendido
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+

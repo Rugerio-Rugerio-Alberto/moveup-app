@@ -1,0 +1,25 @@
+<ion-card role="article">
+  <ion-card-subtitle class="ion-margin">
+    <span class="text-primary" [attr.aria-label]="'Artículo número ' + index">
+      {{ index }}.
+    </span>
+    <span class="article-source-name" [attr.aria-label]="'Fuente: ' + sourceName">
+      {{ sourceName }}
+    </span>
+  </ion-card-subtitle>
+
+  <ion-card-title class="ion-padding-horizontal ion-margin-bottom">
+    {{ article.title }}
+  </ion-card-title>
+
+  <ion-img
+    *ngIf="article.urlToImage"
+    [src]="article.urlToImage"
+    [alt]="'Imagen del artículo: ' + article.title"
+    loading="lazy">
+  </ion-img>
+
+  <ion-card-content *ngIf="article.description">
+    <p>{{ article.description }}</p>
+  </ion-card-content>
+</ion-card>

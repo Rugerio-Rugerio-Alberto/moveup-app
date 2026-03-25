@@ -1,0 +1,27 @@
+# Node / Ionic / Angular
+node_modules/
+dist/
+.angular/
+www/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python / Django
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Env files
+.env
+.env.*

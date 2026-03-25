@@ -1,0 +1,193 @@
+<ion-header [translucent]="true" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+      <ion-title>MoveUp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="landing-content" id="main-content" role="main">
+
+  <!-- Hero Section -->
+  <section class="hero-section" role="region" aria-label="Sección principal">
+    <div class="hero-content">
+      <img src="assets/images/imagen1.png" alt="Ilustración representando el sedentarismo y sus efectos en la salud" class="hero-image" />
+      <h1 class="hero-title">El Sedentarismo: Un Enemigo Silencioso</h1>
+      <p class="hero-subtitle" id="hero-subtitle">Descubre cómo el estilo de vida sedentario está afectando tu salud y bienestar</p>
+      <ion-button (click)="goToIPAQ()" class="cta-button" shape="round" size="large" aria-describedby="hero-subtitle">
+        <ion-icon name="arrow-forward-outline" slot="end" aria-hidden="true"></ion-icon>
+        ¿En qué grado estoy?
+      </ion-button>
+    </div>
+  </section>
+
+  <!-- What is Sedentarism Section -->
+  <section class="content-section" role="region" aria-labelledby="sedentarism-title">
+    <div class="section-container">
+      <div class="section-header">
+        <ion-icon name="information-circle-outline" class="section-icon" aria-hidden="true"></ion-icon>
+        <h2 class="section-title" id="sedentarism-title">¿Qué es el Sedentarismo?</h2>
+      </div>
+      <p class="section-text" aria-describedby="sedentarism-title">
+        El sedentarismo se define como la falta de actividad física regular. Se considera que una persona
+        lleva un estilo de vida sedentario cuando realiza menos de 150 minutos de actividad física moderada
+        por semana, o menos de 75 minutos de actividad física intensa.
+      </p>
+      <p class="section-text" aria-describedby="sedentarism-title">
+        En la era moderna, muchas personas pasan más de 8 horas al día sentadas, ya sea trabajando frente
+        a una computadora, viendo televisión o usando dispositivos móviles. Este comportamiento se ha
+        convertido en una de las principales amenazas para la salud pública mundial.
+      </p>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section" role="region" aria-labelledby="stats-title">
+    <div class="section-container">
+      <h2 class="stats-title" id="stats-title">Cifras Alarmantes</h2>
+      <div class="stats-grid" role="list">
+        <div class="stat-card stat-card-primary" role="listitem">
+          <div class="stat-number" aria-label="31 por ciento">31%</div>
+          <div class="stat-label">de la población mundial es sedentaria</div>
+        </div>
+        <div class="stat-card stat-card-danger" role="listitem">
+          <div class="stat-number" aria-label="3.2 millones">3.2M</div>
+          <div class="stat-label">muertes anuales por inactividad física</div>
+        </div>
+        <div class="stat-card stat-card-warning" role="listitem">
+          <div class="stat-number" aria-label="Más de 8 horas">8+</div>
+          <div class="stat-label">horas promedio sentado al día</div>
+        </div>
+        <div class="stat-card stat-card-danger" role="listitem">
+          <div class="stat-number" aria-label="20 por ciento">20%</div>
+          <div class="stat-label">mayor riesgo de muerte prematura</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Negative Effects Section -->
+  <section class="effects-section" role="region" aria-labelledby="effects-title">
+    <div class="section-container">
+      <div class="section-header">
+        <ion-icon name="warning-outline" class="section-icon danger" aria-hidden="true"></ion-icon>
+        <h2 class="section-title" id="effects-title">Efectos Negativos del Sedentarismo</h2>
+      </div>
+
+      <div class="effects-grid" role="list">
+        <div class="effect-card" role="listitem">
+          <ion-icon name="heart-outline" class="effect-icon effect-icon-danger" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Problemas Cardiovasculares</h3>
+          <p class="effect-text">
+            Aumenta el riesgo de enfermedades cardíacas, hipertensión arterial,
+            colesterol alto y accidentes cerebrovasculares.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="scale-outline" class="effect-icon effect-icon-warning" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Obesidad y Sobrepeso</h3>
+          <p class="effect-text">
+            La falta de actividad física reduce el metabolismo y facilita el
+            aumento de peso, aumentando el riesgo de obesidad.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="medical-outline" class="effect-icon effect-icon-danger" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Diabetes Tipo 2</h3>
+          <p class="effect-text">
+            El sedentarismo reduce la sensibilidad a la insulina, aumentando
+            significativamente el riesgo de desarrollar diabetes.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="fitness-outline" class="effect-icon effect-icon-warning" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Pérdida de Masa Muscular</h3>
+          <p class="effect-text">
+            Los músculos se debilitan y atrofian, reduciendo la fuerza,
+            flexibilidad y movilidad general.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="skull-outline" class="effect-icon effect-icon-danger" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Osteoporosis</h3>
+          <p class="effect-text">
+            Los huesos se vuelven más frágiles y porosos, aumentando el riesgo
+            de fracturas, especialmente en adultos mayores.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="happy-outline" class="effect-icon effect-icon-secondary" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Salud Mental</h3>
+          <p class="effect-text">
+            Está asociado con mayor riesgo de depresión, ansiedad, estrés y
+            deterioro cognitivo.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="moon-outline" class="effect-icon effect-icon-secondary" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Trastornos del Sueño</h3>
+          <p class="effect-text">
+            La falta de actividad física puede causar problemas para conciliar
+            el sueño y reducir su calidad.
+          </p>
+        </div>
+
+        <div class="effect-card" role="listitem">
+          <ion-icon name="battery-dead-outline" class="effect-icon effect-icon-warning" aria-hidden="true"></ion-icon>
+          <h3 class="effect-title">Fatiga Crónica</h3>
+          <p class="effect-text">
+            Contrario a lo que se piensa, la inactividad genera más cansancio
+            y reduce los niveles de energía.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section" role="region" aria-labelledby="cta-title">
+    <div class="section-container">
+      <h2 class="cta-title" id="cta-title">¡Es Momento de Actuar!</h2>
+      <p class="cta-text" aria-describedby="cta-title">
+        Pequeños cambios en tu rutina diaria pueden marcar una gran diferencia.
+        Comienza hoy mismo a incorporar más movimiento en tu vida.
+      </p>
+      <div class="cta-tips" role="list">
+        <div class="tip-item" role="listitem">
+          <ion-icon name="checkmark-circle-outline" class="tip-icon" aria-hidden="true"></ion-icon>
+          <span>Camina 30 minutos al día</span>
+        </div>
+        <div class="tip-item" role="listitem">
+          <ion-icon name="checkmark-circle-outline" class="tip-icon" aria-hidden="true"></ion-icon>
+          <span>Levántate cada hora si trabajas sentado</span>
+        </div>
+        <div class="tip-item" role="listitem">
+          <ion-icon name="checkmark-circle-outline" class="tip-icon" aria-hidden="true"></ion-icon>
+          <span>Usa las escaleras en lugar del ascensor</span>
+        </div>
+        <div class="tip-item" role="listitem">
+          <ion-icon name="checkmark-circle-outline" class="tip-icon" aria-hidden="true"></ion-icon>
+          <span>Realiza ejercicios de estiramiento regularmente</span>
+        </div>
+      </div>
+      <ion-button (click)="goToIPAQ()" class="cta-button-secondary" shape="round" size="large" aria-describedby="cta-title">
+        <ion-icon name="fitness-outline" slot="start" aria-hidden="true"></ion-icon>
+        Comenzar Mi Transformación
+      </ion-button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer" role="contentinfo">
+    <p>Recuerda: Tu salud es tu mayor inversión. Cada paso cuenta.</p>
+  </footer>
+
+</ion-content>
+

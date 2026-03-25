@@ -1,0 +1,326 @@
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+
+
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+
+
+.text-primary{
+  color: var(--ion-color-primary) !important;
+}
+
+.article-source-name {
+  font-size: 12 px;
+}
+
+/* ---------- Blue & White UI baseline ---------- */
+
+/* Content background */
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+/* Toolbar */
+ion-toolbar {
+  --background: var(--ion-toolbar-background);
+  --color: var(--ion-toolbar-color);
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+
+  /* Mejoras para web */
+  @media (min-width: 768px) {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Tab bar */
+ion-tab-bar {
+  --background: var(--ion-tab-bar-background);
+  --color: var(--ion-tab-bar-color);
+  --color-selected: var(--ion-tab-bar-color-selected);
+  border-top: 1px solid rgba(15,23,42,0.06);
+}
+
+/* Side menu (needed globally; the menu element lives outside the sidebar component) */
+ion-menu {
+  --width: 300px;
+  z-index: 1000;
+}
+
+ion-menu ion-content {
+  --background: #ffffff;
+}
+
+/* Asegurar que el overlay del menú tenga el z-index correcto */
+ion-menu::part(backdrop) {
+  z-index: 999;
+}
+
+ion-menu::part(container) {
+  z-index: 1000;
+}
+
+/* Cards */
+ion-card {
+  background: #ffffff;
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+ion-card-header, ion-card-title {
+  color: var(--ion-text-color);
+}
+
+ion-card-subtitle {
+  color: #334155; /* Slate-700 */
+}
+
+/* Buttons */
+ion-button {
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-tint);
+  --background-activated: var(--ion-color-primary-shade);
+  --color: var(--ion-color-primary-contrast);
+  --border-radius: 12px;
+  --box-shadow: 0 6px 14px rgba(30,64,175,0.25);
+}
+
+ion-button[fill="outline"] {
+  --border-color: var(--ion-color-primary);
+  --color: var(--ion-color-primary);
+}
+
+/* Chips, badges */
+ion-chip, ion-badge {
+  --background: rgba(37,99,235,0.1);
+  --color: var(--ion-color-primary);
+}
+
+/* Lists */
+ion-item {
+  --background: #ffffff;
+  --color: var(--ion-text-color);
+  --border-color: rgba(15,23,42,0.06);
+}
+
+/* Typography helpers */
+.h1, h1 { color: var(--ion-text-color); }
+.h2, h2 { color: var(--ion-text-color); }
+.h3, h3 { color: var(--ion-text-color); }
+
+.text-primary { color: var(--ion-color-primary) !important; }
+.text-muted { color: #64748b !important; }
+
+/* ---------- Blue & White Pro UI (higher contrast + dark mode) ---------- */
+
+/* Base surfaces */
+ion-content { --background: var(--ion-background-color); }
+
+/* Toolbar */
+ion-toolbar {
+  --background: var(--ion-toolbar-background);
+  --color: var(--ion-toolbar-color);
+  border-bottom: 1px solid var(--ion-border-soft);
+}
+
+/* Tabs */
+ion-tab-bar {
+  --background: var(--ion-tab-bar-background);
+  --color: var(--ion-tab-bar-color);
+  --color-selected: var(--ion-tab-bar-color-selected);
+  border-top: 1px solid var(--ion-border-soft);
+}
+
+/* Cards */
+ion-card {
+  background: var(--ion-card-background);
+  border: 1px solid var(--ion-card-border);
+  border-radius: 16px;
+  box-shadow: var(--ion-card-shadow);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+ion-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(2,6,23,0.12);
+  border-color: var(--ion-color-primary);
+}
+@media (prefers-color-scheme: dark) {
+  ion-card:hover {
+    box-shadow: 0 18px 48px rgba(0,0,0,0.55);
+  }
+}
+
+/* Card headers */
+ion-card-header, ion-card-title { color: var(--ion-text-color); }
+ion-card-subtitle { color: var(--ion-text-muted); }
+
+/* Buttons */
+ion-button {
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-tint);
+  --background-activated: var(--ion-color-primary-shade);
+  --color: var(--ion-color-primary-contrast);
+  --border-radius: 12px;
+  --box-shadow: var(--ion-button-shadow);
+}
+
+/* Lists */
+ion-item {
+  --background: var(--ion-surface-1);
+  --color: var(--ion-text-color);
+  --border-color: var(--ion-border-soft);
+}
+
+/* Utilities */
+.surface-2 { background: var(--ion-surface-2); }
+.text-muted { color: var(--ion-text-muted) !important; }
+.text-primary { color: var(--ion-color-primary) !important; }
+.border { border: 1px solid var(--ion-border-soft); border-radius: 12px; }
+
+/* ========== Accesibilidad ========== */
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--ion-color-primary);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  border-radius: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus visible styles para navegación por teclado */
+*:focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Mejorar visibilidad de focus en botones */
+ion-button:focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 3px;
+}
+
+/* Focus en inputs */
+ion-input:focus-within,
+ion-textarea:focus-within {
+  outline: 2px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+/* Focus en checkboxes y radios */
+ion-checkbox:focus-visible,
+ion-radio:focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+/* Focus en cards interactivas */
+a:focus-visible,
+.card-link:focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* Asegurar que elementos interactivos sean focusables */
+[role="button"]:focus,
+[role="tab"]:focus,
+[role="menuitem"]:focus {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+/* Elementos solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Fix para menú en web */
+@media (min-width: 768px) {
+  ion-menu {
+    --width: 320px;
+  }
+
+  ion-menu-button {
+    cursor: pointer;
+  }
+
+  /* Asegurar que el toolbar tenga el layout correcto en web */
+  ion-header ion-toolbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative;
+  }
+
+  /* Centrar el título en web */
+  ion-header ion-toolbar ion-title {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Asegurar que los botones no interfieran */
+  ion-header ion-toolbar ion-buttons[slot="start"],
+  ion-header ion-toolbar ion-buttons[slot="end"] {
+    flex-shrink: 0;
+    z-index: 11;
+    position: relative;
+  }
+
+  /* Mejorar el contenido en web */
+  ion-content {
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+}

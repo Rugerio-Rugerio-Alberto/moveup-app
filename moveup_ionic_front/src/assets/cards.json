@@ -1,0 +1,194 @@
+[
+  {
+    "titulo": "¿Qué es el sedentarismo?",
+    "descripcion": "Definición y panorama general.",
+    "url": "https://www.gob.mx/salud/articulos/que-es-sedentarismo",
+    "imagen": "https://www.gob.mx/cms/uploads/article/main_image/4628/sedentarismo.jpg",
+    "categoria": "Informate",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "Los 10 ejercicios para combatir el sedentarismo",
+    "descripcion": "Rutina breve para oficina.",
+    "url": "https://www.larepublica.co/salud-ejecutiva/los-10-ejercicios-para-combatir-el-sedentarismo-y-que-se-puede-hacer-en-la-oficina-3427975",
+    "imagen": "https://www.sillapilable.com/wp-content/uploads/2023/08/estiramientos-en-la-oficina-scaled.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "Pausas activas en la oficina: Relaja tu cuerpo",
+    "descripcion": "Rutina corta en español para activar cuello, hombros y espalda en tu puesto.",
+    "url": "https://www.youtube.com/watch?v=_-aeK-r3tYs",
+    "imagen": "https://i.ytimg.com/vi/_-aeK-r3tYs/hqdefault.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "Riesgos de una vida sedentaria",
+    "descripcion": "MedlinePlus en español sobre efectos de la inactividad y enfermedades asociadas.",
+    "url": "https://medlineplus.gov/spanish/healthrisksofaninactivelifestyle.html",
+    "imagen": "https://cdn.benchmarkpt.com/wp-content/uploads/2025/07/sitting-the-new-smoking-benchmarkpt-newsletter-image-2048x1368-01-1347x900.jpg",
+    "categoria": "salud",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "Estiramientos en el escritorio sin levantarte",
+    "descripcion": "Serie breve de estiramientos para reducir tensión mientras trabajas sentado.",
+    "url": "https://www.youtube.com/watch?v=kdLSJuzRNUw",
+    "imagen": "https://i.ytimg.com/vi/kdLSJuzRNUw/hqdefault.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "Sedentarismo y salud",
+    "descripcion": "Madrid Salud resume impactos del sedentarismo y cómo afrontarlos.",
+    "url": "https://madridsalud.es/sedentarismo-y-salud/",
+    "imagen": "https://i.ytimg.com/vi/QwV1Cvse0FA/maxresdefault.jpg",
+    "categoria": "salud",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Falta de ejercicio y riesgo cardiovascular",
+    "descripcion": "La Fundación del Corazón explica el sedentarismo como factor de riesgo.",
+    "url": "https://fundaciondelcorazon.com/prevencion/riesgo-cardiovascular/falta-ejercicio-sedentarismo.html",
+    "imagen": "https://www.centrosaludnutricional.com/udecontrol_datos/FileManager/WEB_NUEVA/NUTRICION_DEPORTIVA/Sedentarismo_concepto/Sedentarism_2.jpg",
+    "categoria": "consecuencias",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Actividad física – OPS/OMS",
+    "descripcion": "PAHO en español: beneficios de moverse más y recomendaciones clave.",
+    "url": "https://www.paho.org/es/temas/actividad-fisica",
+    "imagen": "https://www.paho.org/sites/default/files/styles/top_hero/public/2025-02/ninobicicleta.jpg?itok=eKhkraMm",
+    "categoria": "salud",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Office Break Workout de 5 minutos",
+    "descripcion": "Movimientos de bajo impacto sin equipo para cortar el sedentarismo.",
+    "url": "https://www.youtube.com/watch?v=tzIJfCMBBRs",
+    "imagen": "https://i.ytimg.com/vi/tzIJfCMBBRs/hqdefault.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Intervenciones para reducir el sedentarismo",
+    "descripcion": "Revisión en español de estrategias para disminuir el tiempo sentado.",
+    "url": "https://www.scielo.org.mx/scielo.php?pid=S1665-70632012000400005&script=sci_arttext",
+    "imagen": "https://freedesignfile.com/upload/2021/04/Workout-at-home-illustration-vector.jpg",
+    "categoria": "prevención",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "El sedentarismo aumenta riesgos cardiometabólicos",
+    "descripcion": "Evidencia clínica: más horas sentado, peores marcadores de salud.",
+    "url": "https://www.scielo.cl/scielo.php?pid=S0034-98872017000400006&script=sci_arttext",
+    "imagen": "https://www.euroschoolindia.com/blogs/wp-content/uploads/2023/12/benefits-of-physical-activity-for-kids-jpg.webp",
+    "categoria": "consecuencias",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Guía básica para detectar sedentarismo",
+    "descripcion": "Herramientas y pautas para identificar y abordar la inactividad.",
+    "url": "https://www.elsevier.es/es-revista-atencion-primaria-27-articulo-guia-basica-deteccion-del-sedentarismo-S0212656714002911",
+    "imagen": "https://www.latercera.com/resizer/v2/UER5QZRYDZAPRMTCBIMCE32XHQ.jpg?auth=e68dc358fbb708da140bdfb4d85fb9340b468ba0b453581ab497bee50d5d3de7&height=450&quality=70&smart=true&width=800",
+    "categoria": "prevención",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "Consejos y rutina para el paso del sedentarismo al ejercicio físico frecuente e intenso",
+    "descripcion": "Aprende a cuidar de ti mism@ aprendiendo a cuidar de esta importante área de la salud.",
+    "url": "https://www.youtube.com/watch?v=WkokmgRzUV0&t=12s",
+    "imagen": "https://img.youtube.com/vi/WkokmgRzUV0/hqdefault.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "alto"
+  },
+  {
+    "titulo": "Micro-pausas activas cada hora",
+    "descripcion": "La actividad física tiene beneficios tales como: Mejora la función cardiovascular, Mejora el peso corporal",
+    "url": "https://www.youtube.com/watch?v=qmGWozuSgVc",
+    "imagen": "https://img.youtube.com/vi/qmGWozuSgVc/hqdefault.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Cómo prevenir el sedentarismo en el día a día",
+    "descripcion": "Recomendaciones prácticas desde salud pública para moverse más.",
+    "url": "https://madridsalud.es/actividad-fisica/",
+    "imagen": "https://www.madrid.es/UnidadesDescentralizadas/Salud/PrevencionYPromocion/EspInformativos/WalkingPeople/Img/ficheros/foto_noticia_586_2.jpg",
+    "categoria": "prevención",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Actividad física y vida sedentaria en adultos mexicanos",
+    "descripcion": "Diagnóstico nacional que orienta acciones preventivas.",
+    "url": "https://www.scielo.org.mx/scielo.php?pid=S0036-36342021000600825&script=sci_arttext",
+    "imagen": "https://www.australiawidefirstaid.com.au/media-library/infographic-about-the-side-effects-of-a-sedentary-lifestyle.png",
+    "categoria": "prevención",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Beneficios de moverse más y sentarse menos",
+    "descripcion": "OMS en español: lineamientos para todas las edades.",
+    "url": "https://www.who.int/es/news-room/fact-sheets/detail/physical-activity",
+    "imagen": "https://d1f00kj7ad54bu.cloudfront.net/Pictures/2000xAny/5/0/9/37509_teaserinfographic1_456995.png",
+    "categoria": "prevención",
+    "nivelActividad": "alto"
+  },
+  {
+    "titulo": "Pausa activa guiada de 10 minutos",
+    "descripcion": "Video en español con ejercicios suaves para romper el sedentarismo.",
+    "url": "https://www.youtube.com/watch?v=s0wT0IQEom4",
+    "imagen": "https://img.youtube.com/vi/s0wT0IQEom4/hqdefault.jpg",
+    "categoria": "actividades",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Consejos para evitar el sedentarismo en la oficina",
+    "descripcion": "Pautas simples: pausas, postura y movimiento regular.",
+    "url": "https://fundaciondelcorazon.com/prevencion/estilo-de-vida/vida-sedentaria.html",
+    "imagen": "https://fundaciondelcorazon.com/templates/yootheme/cache/logo-fec-3f9a53a9.png",
+    "categoria": "prevención",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "¿Qué es el sedentarismo? (Ministerio de Sanidad, España)",
+    "descripcion": "Definición clara de sedentarismo y diferencias con actividad física. Enfoque de salud pública.",
+    "url": "https://estilosdevidasaludable.sanidad.gob.es/actividadFisica/sedentarismo/queEs/home.htm",
+    "imagen": "https://www.sanidad.gob.es/areas/promocionPrevencion/actividadFisica/img/Recomendaciones_ActividadFisica_poblacion_adulta.jpg",
+    "categoria": "Informate",
+    "nivelActividad": "bajo"
+  },
+  {
+    "titulo": "La asociación entre el tiempo sentado y riesgos de salud (CDC)",
+    "descripcion": "Artículo de CDC en español sobre cómo reducir e interrumpir el tiempo sentado disminuye riesgo cardiometabólico.",
+    "url": "https://www.cdc.gov/pcd/issues/2016/16_0263es.htm",
+    "imagen": "https://www.cdc.gov/physical-activity-basics/media/images/healthbenefitsofPAchildren16x9.jpg",
+    "categoria": "Informate",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "¿Cuáles son los riesgos de estar sentado mucho tiempo? (Mayo Clinic)",
+    "descripcion": "Explicación basada en evidencia de los efectos de pasar muchas horas sentado y qué hacer para mitigarlo.",
+    "url": "https://www.mayoclinic.org/es/healthy-lifestyle/adult-health/expert-answers/sitting/faq-20058005",
+    "imagen": "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=1280",
+    "categoria": "Informate",
+    "nivelActividad": "medio"
+  },
+  {
+    "titulo": "Abandona tu zona de confort: la actividad física mejora la salud (UNAM)",
+    "descripcion": "Boletín de la UNAM que resume beneficios de moverse más y costos de la inactividad para los sistemas de salud.",
+    "url": "https://www.dgcs.unam.mx/boletin/bdboletin/2025_457.html",
+    "imagen": "https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=1280",
+    "categoria": "Informate",
+    "nivelActividad": "alto"
+  },
+  {
+    "titulo": "Práctica de actividad física y niveles de sedentarismo en universitarios (UAT)",
+    "descripcion": "Estudio con datos de prevalencia de sedentarismo en estudiantes universitarios.",
+    "url": "https://revistapcc.uat.edu.mx/index.php/RPC/article/view/66",
+    "imagen": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=1280",
+    "categoria": "Informate",
+    "nivelActividad": "alto"
+  }
+]

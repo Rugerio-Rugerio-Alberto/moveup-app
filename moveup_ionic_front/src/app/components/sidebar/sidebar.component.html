@@ -1,0 +1,33 @@
+<ion-content class="sidebar-content" [fullscreen]="true">
+  <div class="menu-topbar" role="banner">
+    <div class="menu-header">
+      <img src="assets/Logo%20app.png" alt="Logo de MoveUp" class="menu-logo" />
+      <span>MoveUp</span>
+    </div>
+  </div>
+
+  <ion-list role="menu">
+    <ion-item
+      *ngFor="let item of menuItems"
+      [class.active]="item.active"
+      button
+      (click)="navigateTo(item.route)"
+      role="menuitem"
+      [attr.aria-current]="item.active ? 'page' : null"
+      [attr.aria-label]="item.title + (item.active ? ', página actual' : '')">
+      <ion-icon [name]="item.icon" slot="start" aria-hidden="true"></ion-icon>
+      <ion-label>{{ item.title }}</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" *ngIf="!item.active" aria-hidden="true"></ion-icon>
+      <ion-icon name="checkmark-circle" slot="end" *ngIf="item.active" aria-label="Página actual" aria-hidden="true"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" button (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      <ion-label>Cerrar sesión</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="menu-footer" role="contentinfo">
+    <p class="menu-footer-text">Tu salud es tu mayor inversión.</p>
+  </div>
+</ion-content>

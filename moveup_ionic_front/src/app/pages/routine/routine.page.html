@@ -1,0 +1,149 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Rutina Semanal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content" role="main">
+  
+  <!-- Anuncio de cambios para lectores de pantalla -->
+  <div aria-live="polite" aria-atomic="true" class="sr-only">
+    <span *ngIf="habits.length > 0">{{ getCompletedHabitsCount(selectedDate) }} de {{ habits.length }} hábitos completados para el día seleccionado</span>
+  </div>
+  
+  <!-- Header con información de la semana -->
+  <div class="routine-header" role="region" aria-labelledby="week-title">
+    <div class="week-info">
+      <h2 id="week-title">Semana del {{ getWeekRange() }}</h2>
+      <p class="motivational-text" aria-describedby="week-title">{{ getMotivationalMessage() }}</p>
+    </div>
+    <div class="progress-summary">
+      <div class="progress-circle" role="status" [attr.aria-label]="'Progreso semanal: ' + totalDaysCompleted + ' de 7 días completados'">
+        <div class="progress-value" aria-hidden="true">{{ totalDaysCompleted }}/7</div>
+        <div class="progress-label" aria-hidden="true">Días completados</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selector de días de la semana -->
+  <div class="week-selector">
+    <ion-segment 
+      [value]="selectedDate" 
+      (ionChange)="onDateChange($event)"
+      role="tablist"
+      aria-label="Seleccionar día de la semana">
+      <ion-segment-button *ngFor="let day of currentWeek" [value]="day.date" role="tab" [attr.aria-selected]="selectedDate === day.date" [attr.aria-label]="'Día ' + day.dayName + ' ' + day.date.split('-')[2]">
+        <ion-label>
+          <div class="day-name">{{ day.dayName.substring(0, 3) }}</div>
+          <div class="day-date">{{ day.date.split('-')[2] }}</div>
+          <div class="day-progress" [class.complete]="day.isComplete" aria-hidden="true">
+            <ion-icon [name]="day.isComplete ? 'checkmark-circle' : 'ellipse-outline'"></ion-icon>
+          </div>
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Información del nivel -->
+  <div class="level-badge" *ngIf="nivelActividad" role="status">
+    <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+    <span>Rutina personalizada para nivel {{ nivelActividad === 'alto' ? 'Alto' : nivelActividad === 'medio' ? 'Moderado' : 'Básico' }}</span>
+  </div>
+
+  <!-- Lista de hábitos para el día seleccionado -->
+  <div class="habits-container" role="region" aria-labelledby="habits-title">
+    <div class="habits-header">
+      <h3 id="habits-title">Hábitos del día</h3>
+      <div class="day-progress-bar">
+        <div 
+          class="progress-fill" 
+          [style.width.%]="getProgressPercentage(selectedDate)"
+          role="progressbar"
+          [attr.aria-valuenow]="getProgressPercentage(selectedDate)"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-label]="'Progreso del día: ' + getProgressPercentage(selectedDate) + ' por ciento'">
+        </div>
+        <span class="progress-text" aria-hidden="true">{{ getCompletedHabitsCount(selectedDate) }}/{{ habits.length }}</span>
+      </div>
+    </div>
+
+    <ion-list role="list">
+      <ion-item 
+        *ngFor="let habit of habits" 
+        [class.completed]="isHabitCompleted(habit.id, selectedDate)"
+        class="habit-item"
+        role="listitem">
+        <ion-checkbox
+          slot="start"
+          [checked]="isHabitCompleted(habit.id, selectedDate)"
+          (ionChange)="toggleHabit(habit.id, selectedDate)"
+          [attr.aria-label]="'Marcar como completado: ' + habit.title + '. ' + habit.description + '. Duración: ' + habit.timeMinutes + ' minutos. Categoría: ' + habit.category"
+          [attr.aria-describedby]="'habit-desc-' + habit.id">
+        </ion-checkbox>
+        
+        <ion-label>
+          <div class="habit-header">
+            <div class="habit-title-row">
+              <ion-icon [name]="habit.icon" class="habit-icon" aria-hidden="true"></ion-icon>
+              <h4>{{ habit.title }}</h4>
+            </div>
+            <div class="habit-meta">
+              <span class="habit-time" aria-label="Duración: {{ habit.timeMinutes }} minutos">{{ habit.timeMinutes }} min</span>
+              <span class="habit-category" aria-label="Categoría: {{ habit.category }}">{{ habit.category }}</span>
+            </div>
+          </div>
+          <p class="habit-description" [id]="'habit-desc-' + habit.id">{{ habit.description }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- Mensaje si no hay hábitos -->
+  <div class="no-habits" *ngIf="habits.length === 0" role="status">
+    <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+    <p>Completa el cuestionario IPAQ para obtener tu rutina personalizada</p>
+    <ion-button (click)="goToIPAQ()" shape="round" aria-label="Ir al cuestionario IPAQ para crear una rutina personalizada">
+      Realizar Cuestionario
+    </ion-button>
+  </div>
+
+  <!-- Calendario de la semana -->
+  <div class="week-calendar" role="region" aria-labelledby="calendar-title">
+    <h3 id="calendar-title">Resumen de la semana</h3>
+    <div class="calendar-grid" role="list">
+      <div 
+        *ngFor="let day of currentWeek" 
+        class="calendar-day"
+        [class.today]="day.date === selectedDate"
+        [class.complete]="day.isComplete"
+        role="listitem"
+        [attr.aria-label]="'Día ' + day.dayName + ' ' + day.date.split('-')[2] + (day.isComplete ? ', día completado' : ', ' + getCompletedHabitsCount(day.date) + ' de ' + habits.length + ' hábitos completados')">
+        <div class="calendar-day-name" aria-hidden="true">{{ day.dayName.substring(0, 3) }}</div>
+        <div class="calendar-day-date" aria-hidden="true">{{ day.date.split('-')[2] }}</div>
+        <div class="calendar-day-progress" aria-hidden="true">
+          <div class="progress-dots">
+            <span 
+              *ngFor="let habit of habits" 
+              class="dot"
+              [class.filled]="isHabitCompleted(habit.id, day.date)">
+            </span>
+          </div>
+        </div>
+        <div class="calendar-day-status" aria-hidden="true">
+          <ion-icon 
+            *ngIf="day.isComplete" 
+            name="checkmark-circle" 
+            color="success">
+          </ion-icon>
+          <span *ngIf="!day.isComplete">{{ getCompletedHabitsCount(day.date) }}/{{ habits.length }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+

@@ -1,0 +1,76 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border" role="banner">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" aria-label="Abrir menú de navegación"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="title-with-logo">
+        <img src="assets/Logo%20app.png" alt="Logo de MoveUp" class="app-logo" />
+        <span>MoveUp</span>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content" role="main">
+
+  <ion-header class="mu-header ion-no-border" collapse="condense" mode="ios">
+    <ion-toolbar class="mu-toolbar" translucent="true">
+      <ion-title size="large">
+        <div class="title-with-logo title-with-logo-condensed">
+          <img src="assets/Logo%20app.png" alt="Logo de MoveUp" class="app-logo" />
+          <span>MoveUp</span>
+        </div>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="intro-container" role="main">
+    <h1 class="intro-title">Información y prevención del sedentarismo</h1>
+
+    <div class="intro-grid" role="list">
+      <!-- Card 1: Información y prevención -->
+      <section class="intro-card" role="listitem">
+        <div class="intro-media">
+          <img src="https://cdn-icons-png.flaticon.com/512/10164/10164470.png" alt="Ilustración sobre información y prevención del sedentarismo" loading="lazy" />
+        </div>
+        <div class="intro-body">
+          <h2 class="intro-subtitle">¿De qué trata la app?</h2>
+          <p>
+            Te ayuda a comprender qué es el sedentarismo, cómo afecta tu salud y qué
+            acciones prácticas puedes tomar para prevenirlo. Incluye recomendaciones
+            de ejercicios simples para empezar hoy.
+          </p>
+        </div>
+      </section>
+
+      <!-- Card 2: Cómo funciona -->
+      <section class="intro-card" role="listitem">
+        <div class="intro-media">
+          <img src="https://cdn-icons-png.flaticon.com/512/4752/4752746.png" alt="Ilustración sobre cómo funciona la aplicación" loading="lazy" />
+        </div>
+        <div class="intro-body">
+          <h2 class="intro-subtitle">Cómo funciona</h2>
+          <ul class="intro-list">
+            <li>Explora noticias y recursos confiables sobre sedentarismo y actividad física.</li>
+            <li>Abre cada noticia para ir a la página del artículo o al video del ejercicio.</li>
+            <li>Marca artículos o actividades como <strong>Favoritos</strong> y consúltalos luego en su pestaña.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Full-width block: Objetivo -->
+    <section class="intro-panel" role="region" aria-labelledby="objetivo-title">
+      <h2 class="intro-subtitle" id="objetivo-title">Objetivo</h2>
+      <p aria-describedby="objetivo-title">
+        Informarte y motivarte a moverte más, reducir tiempos prolongados sentado y
+        adoptar hábitos que favorezcan tu bienestar.
+      </p>
+      <p class="intro-note" role="note">
+        Nota: Este contenido es informativo y no sustituye la orientación de un profesional de la salud.
+      </p>
+    </section>
+  </div>
+
+</ion-content>

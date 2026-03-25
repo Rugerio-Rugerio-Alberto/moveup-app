@@ -1,0 +1,439 @@
+/* Variables de color */
+:host {
+  --landing-blue-50: #eff6ff;
+  --landing-blue-100: #dbeafe;
+  --landing-blue-200: #bfdbfe;
+  --landing-blue-500: #3b82f6;
+  --landing-blue-600: #2563eb;
+  --landing-blue-700: #1d4ed8;
+  --landing-success: #10b981;
+  --landing-warning: #f59e0b;
+}
+
+/* Header con sidebar */
+ion-header {
+  ion-toolbar {
+    --background: var(--landing-blue-600);
+    --color: white;
+    --min-height: 56px;
+
+    @media (min-width: 768px) {
+      --min-height: 64px;
+      --padding-start: 24px;
+      --padding-end: 24px;
+    }
+  }
+
+  ion-menu-button {
+    --color: white;
+    font-size: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.75rem;
+      margin-left: 8px;
+    }
+  }
+
+  ion-title {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-align: center;
+    flex: 1;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  ion-buttons[slot="start"],
+  ion-buttons[slot="end"] {
+    flex-shrink: 0;
+    z-index: 11;
+  }
+}
+
+.routine-header {
+  background: linear-gradient(135deg, var(--landing-blue-600) 0%, var(--landing-blue-500) 100%);
+  color: white;
+  padding: 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-info h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.motivational-text {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.progress-summary {
+  display: flex;
+  align-items: center;
+}
+
+.progress-circle {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.progress-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.progress-label {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.week-selector {
+  padding: 16px;
+  background-color: var(--ion-background-color);
+  border-bottom: 1px solid var(--landing-blue-100);
+}
+
+.week-selector ion-segment {
+  --background: transparent;
+}
+
+.week-selector ion-segment-button {
+  --indicator-color: var(--landing-blue-600);
+  --color: var(--landing-blue-600);
+  min-width: 60px;
+}
+
+.day-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.day-date {
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
+
+.day-progress {
+  margin-top: 4px;
+  font-size: 1.2rem;
+}
+
+.day-progress.complete ion-icon {
+  color: var(--landing-success);
+}
+
+.level-badge {
+  background-color: var(--landing-blue-50);
+  padding: 12px 20px;
+  margin: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid var(--landing-blue-600);
+}
+
+.level-badge ion-icon {
+  font-size: 1.5rem;
+  color: var(--landing-blue-600);
+}
+
+.level-badge span {
+  color: var(--landing-blue-700);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.habits-container {
+  padding: 20px 16px;
+}
+
+.habits-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.habits-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--landing-blue-700);
+}
+
+.day-progress-bar {
+  position: relative;
+  width: 120px;
+  height: 24px;
+  background-color: var(--landing-blue-100);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--landing-blue-500), var(--landing-blue-600));
+  transition: width 0.3s ease;
+  border-radius: 12px;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--landing-blue-700);
+  z-index: 1;
+}
+
+.habit-item {
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--landing-blue-100);
+  transition: all 0.2s ease;
+}
+
+.habit-item.completed {
+  border-color: var(--landing-success);
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.habit-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.habit-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.habit-icon {
+  font-size: 1.5rem;
+  color: var(--landing-blue-600);
+}
+
+.habit-item.completed .habit-icon {
+  color: var(--landing-success);
+}
+
+.habit-title-row h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--landing-blue-700);
+}
+
+.habit-item.completed .habit-title-row h4 {
+  color: var(--landing-success);
+  text-decoration: line-through;
+}
+
+.habit-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+.habit-time {
+  background-color: var(--landing-blue-100);
+  color: var(--landing-blue-700);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.habit-category {
+  color: var(--landing-blue-600);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.habit-description {
+  margin: 8px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--ion-text-muted);
+  line-height: 1.5;
+}
+
+.no-habits {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ion-text-muted);
+}
+
+.no-habits ion-icon {
+  font-size: 4rem;
+  color: var(--landing-blue-300);
+  margin-bottom: 16px;
+}
+
+.no-habits p {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+}
+
+.week-calendar {
+  padding: 20px 16px;
+  background-color: var(--landing-blue-50);
+  margin-top: 24px;
+}
+
+.week-calendar h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--landing-blue-700);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day {
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  border: 2px solid var(--landing-blue-100);
+  transition: all 0.2s ease;
+}
+
+.calendar-day.today {
+  border-color: var(--landing-blue-600);
+  background-color: var(--landing-blue-50);
+}
+
+.calendar-day.complete {
+  border-color: var(--landing-success);
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.calendar-day-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--landing-blue-600);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.calendar-day-date {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--landing-blue-700);
+  margin-bottom: 8px;
+}
+
+.calendar-day-progress {
+  margin: 8px 0;
+}
+
+.progress-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--landing-blue-200);
+  transition: background-color 0.2s ease;
+}
+
+.dot.filled {
+  background-color: var(--landing-blue-600);
+}
+
+.calendar-day.complete .dot.filled {
+  background-color: var(--landing-success);
+}
+
+.calendar-day-status {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--landing-blue-600);
+  font-weight: 600;
+}
+
+.calendar-day.complete .calendar-day-status {
+  color: var(--landing-success);
+}
+
+.calendar-day.complete .calendar-day-status ion-icon {
+  font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .routine-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .progress-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .progress-value {
+    font-size: 1.3rem;
+  }
+
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-day {
+    padding: 8px 4px;
+  }
+
+  .progress-dots {
+    gap: 2px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+}
+
